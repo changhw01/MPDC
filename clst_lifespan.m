@@ -2,7 +2,7 @@ function [rev] = clst_lifespan(basis_tgt, pdiag)
 
 % Description: Cluster Life Span
 %   Given a persistence diagram and a data, find the life span of that clst.
-%
+%   There will be a gap in the diagram unless the cluster is of exactly the same one.
 %
 % Input:
 %   basis_tgt: the cluster we are interested in. Should be a scalar or column vector.
@@ -36,8 +36,8 @@ for ih = ih_start:-1:1
     
     %-- Get the info of this level -------------------------------------------------%
     rank_cur = pdiag.rank_level(ih);
-    size_ls  = pdiag.size_levelset(ih);
-    flag_found = false;
+%     size_ls  = pdiag.size_levelset(ih);
+%     flag_found = false;
     
     %-- Move toward right -------------------------------------------------------------------------%
     for ir = ir_lbound:ir_rbound
