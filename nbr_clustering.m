@@ -7,7 +7,7 @@ if nargin < 3
     I_want = 1:length(distM);
 end
 
-[C, n_clst] = graphconncomp(sparse(distM(I_want,I_want)<=s),'Weak',true);
+[n_clst, C] = graphconncomp(sparse(distM(I_want,I_want)<=s),'Weak',true);
 
 C_cell = cell(n_clst,1);
 for i = 1:n_clst
