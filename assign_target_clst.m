@@ -1,4 +1,4 @@
-function asg_all = construct_ptt_whole_3(I_tgtbasis, distM)
+function asg = assign_target_clst(I_tgtbasis, distM, idx_last)
 
 %% Note
 
@@ -9,14 +9,18 @@ function asg_all = construct_ptt_whole_3(I_tgtbasis, distM)
 %% Main routine
 
 n_data = size(distM,1);
-asg_all = zeros(n_data,1);
+asg = zeros(n_data,1);
 
-for i = 1:n_data
+if nargin < 3
+	idx_last = n_data;
+end
+
+for i = 1:idx_last
     if ismember(i,I_tgtbasis)
-        asg_all(i) = i;
+        asg(i) = i;
     else
         % assign according to the nearest assigned neighbor
         [~,idx] = min(distM(i,1:i-1));
-        asg_all(i) = asg_all(idx);
+        asg(i) = asg(idx);
     end
 end
